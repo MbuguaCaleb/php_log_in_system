@@ -42,7 +42,7 @@
         </form>
         <a type="button" href="signup.php" class="btn btn-link">Sign Up</a>
         <form action="includes/logout.inc.php" method="POST">
-          <button type="submit" class="btn btn-success">Log Out</button>
+          <button type="submit" name="logout-submit" class="btn btn-success">Log Out</button>
         </form>
       </div>
     </nav>
