@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href='./bootstrapdist/css/bootstrap.min.css'>
 
-  <title>PHP LogIn System</title>
+  <title>PHP logIn System</title>
 </head>
 
 <body>
@@ -35,15 +41,22 @@
             </div>
           </li>
         </ul>
-        <form action="includes/login.inc.php" method="POST" class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" name="mailuid" type="text" placeholder="Username/E-mail">
-          <input class="form-control mr-sm-2" type="password" placeholder="password">
-          <button class="btn btn-outline-success my-2 my-sm-0" name="login-submit" type="submit">Log in</button>
-        </form>
-        <a type="button" href="signup.php" class="btn btn-link">Sign Up</a>
-        <form action="includes/logout.inc.php" method="POST">
-          <button type="submit" name="logout-submit" class="btn btn-success">Log Out</button>
-        </form>
+        <?php
+        if (isset($_SESSION['userId'])) {
+
+          echo '<form action="includes/logout.inc.php" method="POST">
+                <button type="submit" name="logout-submit" class="btn btn-success">Log Out</button>
+                </form>';
+        } else {
+
+          echo '<form action="includes/login.inc.php" method="POST" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" name="mailuid" type="text" placeholder="Username/E-mail">
+                <input class="form-control mr-sm-2" type="password" name="pwd" placeholder="password">
+                <button class="btn btn-outline-success my-2 my-sm-0" name="login-submit" type="submit">Log in</button>
+                </form>
+                <a type="button" href="signup.php" class="btn btn-link">Sign Up</a>';
+        }
+        ?>
       </div>
     </nav>
 

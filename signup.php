@@ -2,6 +2,29 @@
 require('./header.php');
 ?>
 <main>
+
+    <?php
+
+    if (isset($_GET['error'])) {
+
+        if ($_GET['error'] == "emptyfields") {
+
+            echo '<p class="text-center" style="color: red;">Fill all fields!</p>';
+        } else if ($_GET['error'] == "invaliduid") {
+            echo '<p class="text-center" style="color: red;">Invalid username!</p>';
+        } else if ($_GET['error'] == "invalidmailuid") {
+            echo '<p class="text-center" style="color: red;">Invalid username and e-mail!</p>';
+        } else if ($_GET['error'] == "invalidmail") {
+            echo '<p class="text-center" style="color: red;">Invalid  e-mail!</p>';
+        } else if ($_GET['error'] == "passwordcheck") {
+            echo '<p class="text-center" style="color: red;">Your Passwords do not match!</p>';
+        } else if ($_GET['error'] == "usertaken") {
+            echo '<p class="text-center" style="color: red;">Username is already taken!</p>';
+        }
+    } else if ($_GET(['signup'] == "success")) {
+        echo '<p class="text-center" style="color: green;">Signup successful!</p>';
+    }
+    ?>
     <div class="container" style="margin-top: 2rem">
         <form action="includes/signup.inc.php" method="POST">
             <div class="form-group row">
